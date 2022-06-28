@@ -1,17 +1,17 @@
 const data = {
   products: [
     {
-      name: "Nalgene Bottle",
-      slug: "hgp-nalgene",
-      category: "Accesories",
-      image: "/images/nalgene.webp",
-      brand: "Hungry Ghost Press",
-      price: "28.00",
+      name: "Nylon Metal Beach Shorts",
+      slug: "stone-island-shorts",
+      category: "Shorts",
+      image: "/images/stone-island-shorts.webp",
+      brand: "Stone Island",
+      price: "208.00",
       rating: 5.0,
       numReviews: 8,
       countInStock: 20,
       description:
-        "Reusable plastics don't have to be ugly. 100% BPA free Nalgene water bottle in bright red and yellow. Designed by Hungry Ghost Press.",
+        "Stone Island men’s mid rise, olive green garment dyed nylon swim trunks. Feature a micro ripstop nylon fabric with a distinctive metallic sheen, two front quarter top hip pockets.",
     },
     {
       name: "MP-103 Field Pant",
@@ -27,17 +27,17 @@ const data = {
         "Spectral-camo desert pants. A deconstucted study in brutalist architecture, French workwear and S.T.S. era spacesuits design.",
     },
     {
-      name: "Nike Mars Yard 2.0",
-      slug: "mars-yard",
+      name: "ACG Lowcate Sneaker",
+      slug: "acg-sneaker",
       category: "Footwear",
-      image: "/images/marsyard.jpeg",
+      image: "/images/nike-acg.webp",
       brand: "Nike",
-      price: "185.00",
+      price: "110.00",
       rating: 4.2,
       numReviews: 12,
       countInStock: 100,
       description:
-        "Tom Sachs for Nike. Five years of development. The perfect daily driver. Is it high art or the most functional shoe of all time? Who says you have to choose?",
+        "Nike ACG men’s standard fit “Light Iron Ore” grey and “Malachite” green mesh and suede low top retro-inspired trail running sneaker. Features a mesh and suede upper",
     },
     {
       name: "Man-TLE R12 C1 Cap",
@@ -69,7 +69,7 @@ const data = {
       name: "86 Mountain Jacket",
       slug: "northface-online-ceramics-jacket",
       category: "Footwear",
-      image: "/images/nf-onlineceramics.webp",
+      image: "/images/nf-onlineceramics.jpg",
       brand: "The Northface",
       price: "315.00",
       rating: 4.8,
