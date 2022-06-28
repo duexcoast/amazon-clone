@@ -22,7 +22,7 @@ const data = {
       price: "275.00",
       rating: 5.0,
       numReviews: 4,
-      countInStock: 10,
+      countInStock: 0,
       description:
         "Spectral-camo desert pants. A deconstucted study in brutalist architecture, French workwear and S.T.S. era spacesuits design.",
     },
