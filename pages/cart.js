@@ -9,6 +9,8 @@ import { useRouter } from "next/router";
 export default function CartScreen() {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
+
+  // here we destructure the cartItems from the state object. This syntax creates const cartItems.
   const {
     cart: { cartItems },
   } = state;
@@ -18,13 +20,18 @@ export default function CartScreen() {
   };
 
   const updateCartHandler = (item, qty) => {
+    // we need this bc qty, as received from the <select> element, is a string.
     const quantity = Number(qty);
+
+    // this spread syntax allows us to update the quantity prop in the item object.
     dispatch({ type: "CART_ADD_ITEM", payload: { ...item, quantity } });
   };
 
   return (
     <Layout title="Shopping Cart">
       <h1 className="mb-4 text-xl">Shopping Cart</h1>
+
+      {/* Conditional rendering, if the cart is empty display this: */}
       {cartItems.length === 0 ? (
         <div>
           Cart is empty. <Link href="/">Go shopping.</Link>
@@ -64,6 +71,7 @@ export default function CartScreen() {
                           updateCartHandler(item, e.target.value)
                         }
                       >
+                        {/* here we are creating an array of [0, ..., n] from the number in item.countInStock, and then mapping over that array to create an <option> element for the full amount in stock. */}
                         {[...Array(item.countInStock).keys()].map((x) => (
                           <option key={x + 1} value={x + 1}>
                             {x + 1}
@@ -86,14 +94,18 @@ export default function CartScreen() {
             <ul>
               <li>
                 <div className="pb-3 text-lg">
+                  {/* the first reduce method gives us the total amount of items in the cart. */}
                   Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : $
-                  {cartItems.reduce(
-                    (a, c) => a + c.quantity * Number(c.price),
-                    0
-                  )}
+                  {/* the second reduce method gives us the total price, by multiplying the quantity of each item by the item price, (we use Number() because the prices is stored as a string.) 
+                  
+                  we wrap it in ().toFixed(2) in order to display the .00 if the price is an int. Note that this changes the typeof from number to string*/}
+                  {cartItems
+                    .reduce((a, c) => a + c.quantity * Number(c.price), 0)
+                    .toFixed(2)}
                 </div>
               </li>
               <li>
+                {/* The checkout button will bring us to the shipping page. router.push("/<page> is ") */}
                 <button
                   className="primary-button w-full"
                   onClick={() => router.push("/shipping")}

@@ -12,6 +12,9 @@ export default function ProductScreen() {
   const { query } = useRouter();
   const { slug } = query;
   const product = data.products.find((x) => x.slug === slug);
+
+  const stock = product.countInStock > 0 ? true : false;
+
   if (!product) {
     return <div>Product Not Found</div>;
   }
@@ -27,6 +30,7 @@ export default function ProductScreen() {
       type: "CART_ADD_ITEM",
       payload: { ...product, quantity: quantity },
     });
+    // We use router.push() here because there's no link to press, we are programatically navigating to a new page. router.push() is client-side navigation and not SEO friendly. it does not create anchor tags. 
     router.push("/cart");
   };
 
@@ -66,13 +70,13 @@ export default function ProductScreen() {
             </div>
             <div className="mb-2 flex justify-between">
               <div>Status</div>
-              <div>{product.countInStock > 0 ? "In stock" : "Unavailable"}</div>
+              <div>{stock ? "In stock" : "Unavailable"}</div>
             </div>
             <button
-              className="primary-button w-full"
+              className={`${stock ? "primary-button" : "inactive-button"} w-full`}
               onClick={addToCartHandler}
             >
-              Add to cart
+              {stock ? "Add to Cart" : "Out of Stock"}
             </button>
           </div>
         </div>
