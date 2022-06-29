@@ -28,9 +28,9 @@ export default function ProductScreen() {
     }
     dispatch({
       type: "CART_ADD_ITEM",
-      payload: { ...product, quantity: quantity },
+      payload: { ...product, quantity },
     });
-    // We use router.push() here because there's no link to press, we are programatically navigating to a new page. router.push() is client-side navigation and not SEO friendly. it does not create anchor tags. 
+    // We use router.push() here because there's no link to press, we are programatically navigating to a new page. router.push() is client-side navigation and not SEO friendly. it does not create anchor tags.
     router.push("/cart");
   };
 
@@ -73,7 +73,9 @@ export default function ProductScreen() {
               <div>{stock ? "In stock" : "Unavailable"}</div>
             </div>
             <button
-              className={`${stock ? "primary-button" : "inactive-button"} w-full`}
+              className={`${
+                stock ? "primary-button" : "inactive-button"
+              } w-full`}
               onClick={addToCartHandler}
             >
               {stock ? "Add to Cart" : "Out of Stock"}
