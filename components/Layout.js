@@ -8,6 +8,7 @@ export default function Layout({ title, children }) {
   const { cart } = state;
   const [cartItemsCount, setCartItemsCount] = useState(0);
 
+  // useEffect hook to setCartItemsCount, this fixes hydration errors caused by the difference between cartItemsCount on the server (which is zero on refresh), and the cartItems on the client-side which are saved in a cookie. By using the useState and useEffect hooks, the initial cartItemsCount will be 0 (matching the server-side count), and it will then update to what we have in the context Store (which is stored locally with a cookie). 
   useEffect(() => {
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
   }, [cart.cartItems]);
