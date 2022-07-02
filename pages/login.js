@@ -22,14 +22,16 @@ const schema = yup.object({
 });
 
 export default function LoginScreen() {
-  const { data: session } = useSession;
+  const { data: session } = useSession();
 
   const router = useRouter();
-  console.log(router.query);
+  console.log(router);
+  console.log("Session: ", session);
   const { redirect } = router.query;
 
   useEffect(() => {
     if (session?.user) {
+      console.log("test: ", session?.user);
       router.push(redirect || "/");
     }
   }, [router, session, redirect]);
