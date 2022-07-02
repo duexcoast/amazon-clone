@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ToastContainer } from "react-toastify";
 import { Store } from "../utils/Store";
 import { useSession } from "next-auth/react";
+import { Menu } from "@headlessui/react";
 // import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Layout({ title, children }) {
@@ -12,7 +13,6 @@ export default function Layout({ title, children }) {
   const [cartItemsCount, setCartItemsCount] = useState(0);
 
   const { data: session, status } = useSession();
-  console.log(session);
 
   // useEffect hook to setCartItemsCount, this fixes hydration errors caused by the difference between cartItemsCount on the server (which is zero on refresh), and the cartItems on the client-side which are saved in a cookie. By using the useState and useEffect hooks, the initial cartItemsCount will be 0 (matching the server-side count), and it will then update to what we have in the context Store (which is stored locally with a cookie).
   useEffect(() => {
@@ -51,7 +51,18 @@ export default function Layout({ title, children }) {
               {status === "loading" ? (
                 "Loading"
               ) : session?.user ? (
-                session.user.name
+                <Menu as='div' className='relative inline-block'>
+                  <Menu.Button className='text-blue-600'>
+                    {session.user.name}
+                  </Menu.Button>
+                  <Menu.Items className="absolute right-0 w-56 origin-top-right shadow-lg">
+                    <Menu.Item>
+                      <DropdownLink>
+                        
+                      </DropdownLink>
+                    </Menu.Item>
+                  </Menu.Items>
+                </Menu>
               ) : (
                 <Link href='/login'>
                   <a className='p-2'>Login</a>
