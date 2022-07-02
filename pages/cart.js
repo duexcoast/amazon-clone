@@ -29,32 +29,32 @@ function CartScreen() {
   };
 
   return (
-    <Layout title="Shopping Cart">
-      <h1 className="mb-4 text-xl">Shopping Cart</h1>
+    <Layout title='Shopping Cart'>
+      <h1 className='mb-4 text-xl'>Shopping Cart</h1>
 
       {/* Conditional rendering, if the cart is empty display this: */}
       {cartItems.length === 0 ? (
         <div>
-          Cart is empty. <Link href="/">Go shopping.</Link>
+          Cart is empty. <Link href='/'>Go shopping.</Link>
         </div>
       ) : (
-        <div className="grid md:grid-cols-4 md:gap-5">
-          <div className="overflow-x-auto md:col-span-3">
-            <table className="min-w-full">
-              <thead className="border-b">
+        <div className='grid md:grid-cols-4 md:gap-5'>
+          <div className='overflow-x-auto md:col-span-3'>
+            <table className='min-w-full'>
+              <thead className='border-b'>
                 <tr>
-                  <th className="px-5 text-left">Item</th>
-                  <th className="p-5 text-right">Quantity</th>
-                  <th className="p-5 text-right">Price</th>
-                  <th className="p-5">Action</th>
+                  <th className='px-5 text-left'>Item</th>
+                  <th className='p-5 text-right'>Quantity</th>
+                  <th className='p-5 text-right'>Price</th>
+                  <th className='p-5'>Action</th>
                 </tr>
               </thead>
               <tbody>
                 {cartItems.map((item) => (
-                  <tr key={item.slug} className="border-b">
-                    <td className="py-4">
+                  <tr key={item.slug} className='border-b'>
+                    <td className='py-4'>
                       <Link href={`/products/${item.slug}`}>
-                        <a className="flex items-center">
+                        <a className='flex items-center'>
                           <Image
                             src={item.image}
                             alt={item.name}
@@ -65,7 +65,7 @@ function CartScreen() {
                         </a>
                       </Link>
                     </td>
-                    <td className="p-5 text-right">
+                    <td className='p-5 text-right'>
                       <select
                         value={item.quantity}
                         onChange={(e) =>
@@ -80,10 +80,10 @@ function CartScreen() {
                         ))}
                       </select>
                     </td>
-                    <td className="p-5 text-right">${item.price}</td>
-                    <td className="p-5 text-center">
+                    <td className='p-5 text-right'>${item.price}</td>
+                    <td className='p-5 text-center'>
                       <button onClick={() => removeFromCartHandler(item)}>
-                        <XCircleIcon className="h-5 w-5"></XCircleIcon>
+                        <XCircleIcon className='h-5 w-5'></XCircleIcon>
                       </button>
                     </td>
                   </tr>
@@ -91,10 +91,10 @@ function CartScreen() {
               </tbody>
             </table>
           </div>
-          <div className="card p-5">
+          <div className='card p-5'>
             <ul>
               <li>
-                <div className="pb-3 text-lg">
+                <div className='pb-3 text-lg'>
                   {/* the first reduce method gives us the total amount of items in the cart. */}
                   Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : $
                   {/* the second reduce method gives us the total price, by multiplying the quantity of each item by the item price, (we use Number() because the prices is stored as a string.) 
@@ -108,7 +108,7 @@ function CartScreen() {
               <li>
                 {/* The checkout button will bring us to the shipping page. router.push("/<page> is ") */}
                 <button
-                  className="primary-button w-full"
+                  className='primary-button w-full'
                   onClick={() => router.push("login?redirect=/shipping")}
                 >
                   Checkout

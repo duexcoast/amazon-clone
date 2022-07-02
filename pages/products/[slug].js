@@ -9,8 +9,9 @@ import { Store } from "../../utils/Store";
 export default function ProductScreen() {
   const { state, dispatch } = useContext(Store);
   const router = useRouter();
-  const { query } = useRouter();
-  const { slug } = query;
+  // const { query } = useRouter();
+  console.log(router.query);
+  const { slug } = router.query;
   const product = data.products.find((x) => x.slug === slug);
 
   const stock = product.countInStock > 0 ? true : false;
@@ -36,23 +37,23 @@ export default function ProductScreen() {
 
   return (
     <Layout title={product.name}>
-      <div className="py-2">
-        <Link href="/">Back to products.</Link>
+      <div className='py-2'>
+        <Link href='/'>Back to products.</Link>
       </div>
-      <div className="grid md:grid-cols-4 md:gap-3">
-        <div className="md:col-span-2">
+      <div className='grid md:grid-cols-4 md:gap-3'>
+        <div className='md:col-span-2'>
           <Image
             src={product.image}
             alt={product.name}
             width={1200}
             height={1600}
-            layout="responsive"
+            layout='responsive'
           ></Image>
         </div>
         <div>
           <ul>
             <li>
-              <h1 className="text-lg">{product.name}</h1>
+              <h1 className='text-lg'>{product.name}</h1>
             </li>
             <li>Category: {product.category}</li>
             <li>Brand: {product.brand}</li>
@@ -63,12 +64,12 @@ export default function ProductScreen() {
           </ul>
         </div>
         <div>
-          <div className="card p-5">
-            <div className="mb-2 flex justify-between">
+          <div className='card p-5'>
+            <div className='mb-2 flex justify-between'>
               <div>Price</div>
               <div>{product.price}</div>
             </div>
-            <div className="mb-2 flex justify-between">
+            <div className='mb-2 flex justify-between'>
               <div>Status</div>
               <div>{stock ? "In stock" : "Unavailable"}</div>
             </div>
