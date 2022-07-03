@@ -37,14 +37,14 @@ export default function ProductItem({ product }) {
           <img
             src={product.image}
             alt={product.name}
-            className='rounded shadow h-4/6 w-full object-cover'
+            className='rounded shadow h-4/6 w-full object-cover '
           />
         </a>
       </Link>
       <div className='flex flex-col items-center justify-center p-5'>
         <Link href={`/products/${product.slug}`}>
           <a>
-            <h2 className='text-lg'>{product.name}</h2>
+            <h2 className='text-lg text-center'>{product.name}</h2>
           </a>
         </Link>
         <p className='mb-2'>{product.brand}</p>

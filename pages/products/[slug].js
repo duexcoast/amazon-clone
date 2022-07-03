@@ -53,10 +53,10 @@ export default function ProductScreen() {
         <div>
           <ul>
             <li>
-              <h1 className='text-lg'>{product.name}</h1>
+              <h1 className='text-3xl mb-2'>{product.name}</h1>
             </li>
+            <li>{product.brand}</li>
             <li>Category: {product.category}</li>
-            <li>Brand: {product.brand}</li>
             <li>
               {product.rating} stars from {product.numReviews} reviews
             </li>
@@ -66,11 +66,11 @@ export default function ProductScreen() {
         <div>
           <div className='card p-5'>
             <div className='mb-2 flex justify-between'>
-              <div>Price</div>
+              <div className='font-bold'>Price</div>
               <div>{product.price}</div>
             </div>
             <div className='mb-2 flex justify-between'>
-              <div>Status</div>
+              <div className='font-bold'>Status</div>
               <div>{stock ? "In stock" : "Unavailable"}</div>
             </div>
             <button

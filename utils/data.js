@@ -53,7 +53,7 @@ const data = {
       numReviews: 12,
       countInStock: 100,
       description:
-        "Nike ACG men’s standard fit “Light Iron Ore” grey and “Malachite” green mesh and suede low top retro-inspired trail running sneaker. Features a mesh and suede upper",
+        "A mesh and suede low top retro-inspired trail running sneaker. Comes in “Light Iron Ore” grey and “Malachite” green. Nike ACG men’s standard fit.",
     },
     {
       name: "Man-TLE R12 C1 Cap",
